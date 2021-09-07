@@ -31,7 +31,7 @@ function App() {
     });
   }, []);
 
-  return <>{loggedInUser ? <Authenticated /> : <SignIn />}</>;
+  return <>{loggedInUser ? <Authenticated user={loggedInUser}/> : <SignIn />}</>;
 }
 
 export default App;
