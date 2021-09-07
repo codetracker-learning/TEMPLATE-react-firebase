@@ -1,3 +1,5 @@
+// This file pulls in all your FB app details, but keeps them private. NEVER PUSH UP API Keys to github. Use an .env file
+
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,

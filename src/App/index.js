@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import Authenticated from '../views/Authenticated';
-import SignIn from '../views/SignIn';
-import { checkUserExists, createUser } from '../api/users';
+import firebase from 'firebase/app'; // use firebase dependency
+import 'firebase/auth'; // use firebase auth package
+import Authenticated from '../views/Authenticated'; // view for an authed user
+import SignIn from '../views/SignIn'; // view for unauthenticated user
+import { checkUserExists, createUser } from '../api/users'; // methods to check if user exists in the DB > create user if not
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
