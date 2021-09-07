@@ -6,14 +6,14 @@ import SignIn from '../views/SignIn'; // view for unauthenticated user
 import { checkUserExists, createUser } from '../api/users'; // methods to check if user exists in the DB > create user if not
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
       if (authed) {
          // TO DO: To create users on login...
          // MAKE A QUERY TO THE DB TO SEE IF USER EXISTS
-        checkUserExists(authed.uid).then((response) => {
+        checkUserExists(authed).then((response) => {
           const user = {
             fullName: authed.displayName,
             email: authed.email,
@@ -24,20 +24,24 @@ function App() {
           };
           if (response === "create user") {
             // IF NOT, CREATE A POST TO USERS THEN SET STATE
-            createUser(user);
-            console.log('Authenticated User Created', user);
+            createUser(user).then((newUser) => {
+              setUser(newUser)
+              console.log('Authenticated User Created', newUser);
+            });
+          } else {
+            setUser(response);
+            console.log('Authenticated User', response);
           }
-          setLoggedInUser(user);
         });
         
       } else {
+        setUser(null);
         console.log('NO Authenticated User');
-        setLoggedInUser(null);
       }
     });
   }, []);
 
-  return <>{loggedInUser ? <Authenticated user={loggedInUser}/> : <SignIn />}</>;
+  return <>{user ? <Authenticated user={user}/> : <SignIn />}</>;
 }
 
 export default App;

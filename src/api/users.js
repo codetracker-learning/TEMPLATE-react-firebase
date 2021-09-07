@@ -9,15 +9,16 @@ const createUser = (userObj) => new Promise((resolve, reject) => {
       const body = { firebaseKey: response.data.name };
 
       axios.patch(`${dbUrl}/users/${response.data.name}.json`, body)
-        .then(() => console.warn("User Created"));
+        .then(() => resolve({ ...userObj, ...body}));
     }).catch(reject);
 });
 
-const checkUserExists = (uid) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/users.json?orderBy="uid"&equalTo="${uid}"`)
+const checkUserExists = (user) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/users.json?orderBy="uid"&equalTo="${user.uid}"`)
     .then((response) => {
       if (Object.values(response.data).length) {
-        resolve(response.data)
+        const [foundUser] = Object.values(response.data);
+        resolve({ ...foundUser });
       } else {
         resolve("create user");
       }
