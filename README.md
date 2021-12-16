@@ -9,7 +9,7 @@ $ npm start
 ```
 
 On initial start, you will get errors. Add your Firebase CDN credentials.
-- Rename the `.env.local.sample` to `.env`
+- Rename the `.env.sample` to `.env`
 - Place the values from your Firebase App into the values
 - Stop your server and start it again. You should be able to login to your application!
 
