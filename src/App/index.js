@@ -11,7 +11,6 @@ function App() {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((authed) => {
       if (authed) {
-         // TO DO: To create users on login...
          // MAKE A QUERY TO THE DB TO SEE IF USER EXISTS
         checkUserExists(authed).then((response) => {
           const user = {
