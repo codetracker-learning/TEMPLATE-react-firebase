@@ -2,11 +2,10 @@
 This template uses Firebase authentication with Google and Realtime Database.
 
 ## Get Started
-You can either CLONE or FORK this repo. Fork if you plan to use it as the base of a project.
+Click the GREEN "Use this template" button
 
-### Clone:
 ```bash
-$ git clone git@github.com:codetracker-learning/react-firebase-template.git
+$ git clone {YOUR-REPO}
 $ npm install
 $ npm start
 ```
