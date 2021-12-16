@@ -22,7 +22,7 @@ function App() {
             dateVisited: new Date(),
           };
           if (response === "create user") {
-            // IF NOT, CREATE A POST TO USERS THEN SET STATE
+            // IF USER DOES NOT EXIST, CREATE A POST TO USERS THEN SET STATE
             createUser(user).then((newUser) => {
               setUser(newUser)
               console.log('Authenticated User Created', newUser);
