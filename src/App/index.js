@@ -25,11 +25,11 @@ function App() {
             // IF USER DOES NOT EXIST, CREATE A POST TO USERS THEN SET STATE
             createUser(user).then((newUser) => {
               setUser(newUser)
-              console.log('Authenticated User Created', newUser);
+              console.warn('Authenticated User Created', newUser);
             });
           } else {
             setUser(response);
-            console.log('Authenticated User', response);
+            console.warn('Authenticated User', response);
           }
         });
         
